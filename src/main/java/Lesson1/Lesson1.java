@@ -35,7 +35,7 @@ public class Lesson1 {
         System.out.println(Msixth(intVol6));
         System.out.println("Задание 7 :");
         Mseventh(strVol7);
-        System.out.println("Зфдание 8 : год "+yearTest+" является" );
+        System.out.print("Задание 8 : год "+yearTest+" является" );
         Meighth(yearTest);
 
     }
@@ -68,9 +68,9 @@ public class Lesson1 {
 
     static void Meighth(int a){
         if( a % 400 == 0 || (a % 4 == 0 && a % 100 != 0)){
-            System.out.println("високосным");
+            System.out.println(" високосным");
         } else {
-            System.out.println("простым");
+            System.out.println(" простым");
         }
 
     }
