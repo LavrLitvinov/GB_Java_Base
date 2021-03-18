@@ -10,6 +10,10 @@ public class Lesson2 {
         int[] arR2 = new int[8];
         int[] arR3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         int[][] arR4 = new int[8][8];
+        int[] arR5 = { 6,7,3,23,-17,56,1234,238,17,79,13,678 };
+        int[] arR6 = { 2, 2, 2, 1, 2, 2,10, 1 };
+        int[] arR7 = { 1, 16, 165, 15, 78,75,90, 16, 54 };
+
 
         System.out.println("Задание 1");
         System.out.print("Исходный массив: ");
@@ -25,6 +29,26 @@ public class Lesson2 {
         taskThre(arR3);
         System.out.println("Задание 4");
         sqPrint(arR4);
+        System.out.println("Задание 5:");
+        int bigB = 0;
+        bigB = maxArr(arR5, bigB);
+        System.out.print("Максимальное значение в массиве: ");
+        System.out.println(bigB);
+        System.out.println("Задание 6: " + " ");
+
+        if( sumCentr(arR6) ){
+            System.out.println("Такое место есть!");
+        }
+        else {
+            System.out.println("Такого места нет!");
+        }
+
+        if( sumCentr(arR7) ){
+            System.out.println("Такое место есть!");
+        }
+        else {
+            System.out.println("Такого места нет!");
+        }
     }
 
     static void checkNull(int[] arr1) {
@@ -78,8 +102,31 @@ public class Lesson2 {
             System.out.println();
         }
     }
+    static int maxArr(int[] arR51, int bigA){
+        bigA = arR51[0];
+        for (int i = 0; i < arR51.length; i++) {
+           if( bigA < arR51[i] ) {
+             bigA = arR51[i];
+           }
+        }
+        return bigA;
+    }
 
-    
+    static boolean sumCentr(int[] aRRR){
+        int suma = 0;
+        int suma1 = 0;
+        for (int i = 0; i < aRRR.length ; i++) {
+            suma1 += aRRR[i];
+        }
+        for (int i = 0; i < aRRR.length; i++) {
+          suma += aRRR[i];
+          suma1 -= aRRR[i];
+          if( suma == suma1 ){
+              return true;
+          }
+        }
+        return false;
+    }
 
 
 }
