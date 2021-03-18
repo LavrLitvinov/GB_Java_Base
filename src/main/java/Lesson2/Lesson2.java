@@ -13,6 +13,8 @@ public class Lesson2 {
         int[] arR6 = { 2, 2, 2, 1, 2, 2,10, 1 };
         int[] arR7 = { 1, 16, 165, 15, 78,75,90, 16, 54 };
         int[] arR8 = { 1,2,2,3,3,3,2,2,1,1,4,5,6 };
+        int bigC = 0;
+
 
 
         System.out.println("Задание 1");
@@ -31,9 +33,9 @@ public class Lesson2 {
         sqPrint(arR4);
         System.out.println("Задание 5:");
         int bigB = 0;
-        bigB = maxArr(arR5, bigB);
+        bigC = maxiArr(arR5, bigB);
         System.out.print("Максимальное значение в массиве: ");
-        System.out.println(bigB);
+        System.out.println(bigC);
         System.out.println("Задание 6: " + " ");
 
         if( sumCentr(arR6) ){
@@ -56,25 +58,14 @@ public class Lesson2 {
         printArr(arR8);
         Balls(arR8);
 
-
-
-
-        /*StringBuffer stringBuffer = new StringBuffer(strS);
-        stringBuffer.delete(0,5);
-        strS = stringBuffer.toString();
-        System.out.println("******************");
-        System.out.println(strS);*/
-
     }
-
-
 
     static void checkNull(int[] arr1) {
         for (int i = 0; i < 10; i++) {
             if (arr1[i] == 0) {
                 arr1[i] = 1;
             }
-            System.out.print(arr1[i] + " ");
+            System.out.printf("%3d", arr1[i] );
         }
         System.out.println();
     }
@@ -99,7 +90,7 @@ public class Lesson2 {
 
     static void taskThre(int[] arr3) {
         int j = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < arr3.length; i++) {
             if (arr3[i] < 6) {
                 arr3[i] = arr3[i] * 2;
             }
@@ -112,19 +103,23 @@ public class Lesson2 {
     static void sqPrint(int[][] arR41) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if(i == j){
-                    arR41[i][j] = 1;
-                }
-                System.out.print(arR41[i][j] + " ");
+                arR41[i][i] = 1;
+                arR41[i][8 - 1 - i] = 1;
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(" " + arR41[i][j]);
             }
             System.out.println();
         }
     }
-    static int maxArr(int[] arR51, int bigA){
-        bigA = arR51[0];
-        for (int i = 0; i < arR51.length; i++) {
-           if( bigA < arR51[i] ) {
-             bigA = arR51[i];
+
+    static int maxiArr(int[] B, int bigA){
+        bigA = B[0];
+        for (int i = 0; i < B.length; i++) {
+            if( bigA < B[i] ) {
+                bigA = B[i];
            }
         }
         return bigA;
@@ -161,7 +156,7 @@ public class Lesson2 {
 
                 i = 0;
                 r = 2;
-                System.out.println("i = "+ i + " out");
+
             } else { i += 1;}
 
         }
@@ -171,9 +166,6 @@ public class Lesson2 {
     static int[] removeElement(int[] n, int index) {
 
         int end = n.length;
-        System.out.println("удаляем номер: "+ index);
-        System.out.println("удаляем: "+ n[index]);
-
         for(int j = index; j < end - 1; j++) {
             n[j] = n[j + 1];
         }
@@ -183,11 +175,9 @@ public class Lesson2 {
         for(int k = 0; k < newArr.length; k++) {
             newArr[k] = n[k];
         }
-        System.out.println("delete");
+
         return newArr;
     }
-
-
 
 
 }
