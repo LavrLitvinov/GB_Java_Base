@@ -1,8 +1,8 @@
-package lesson_1;
+package Lesson1;
 
 import org.w3c.dom.ls.LSOutput;
 
-public class lesson_1 {
+public class Lesson1 {
 // Домашнее задание первого урока
     public static void main(String[] args) {
         // Набиваем исходные величины
@@ -26,28 +26,25 @@ public class lesson_1 {
         boolean dooleanValue = true;
 
         System.out.println("Задание 3 :"+" a = "+volA + " b = "+volB + " c = "+volC+" d = "+volD+ " Итог:");
-        System.out.println(_three(volA, volB, volC, volD));
+        System.out.println(Mthree(volA, volB, volC, volD));
         System.out.println("Задание 4 : a = " + intVol1 +" b = " + intVol2);
-        System.out.println(_four(intVol1, intVol2));
+        System.out.println(Mfour(intVol1, intVol2));
         System.out.println("Задание 5 : a = "+floatVol5);
-        _fifth(floatVol5);
+        Mfifth(floatVol5);
         System.out.println("Задание 6 :  a = "+ intVol6);
-        System.out.println(_sixth(intVol6));
+        System.out.println(Msixth(intVol6));
         System.out.println("Задание 7 :");
-        _seventh(strVol7);
-        System.out.println("Зфдание 8 : год "+yearTest+" является" );
-        _eighth(yearTest);
-
-
-
+        Mseventh(strVol7);
+        System.out.print("Задание 8 : год "+yearTest+" является" );
+        Meighth(yearTest);
 
     }
 
-    static float _three(float a, float b, float c, float d){
+    static float Mthree(float a, float b, float c, float d){
         return a * (b + (c / d));
     }
 
-    static boolean _four(int a, int b){
+    static boolean Mfour(int a, int b){
         if (a+b < 10 || a+b > 20){
             return true;
         } else {
@@ -55,25 +52,25 @@ public class lesson_1 {
 
         }
     }
-    static void _fifth(float a) {
+    static void Mfifth(float a) {
         if (a >= 0) {
             System.out.println("Положительное");
         } else {
             System.out.println("Отрицательное");
         }
     }
-    static boolean _sixth(int a){
+    static boolean Msixth(int a){
         return a >= 0 ? true : false ;
         }
-    static void _seventh(String a){
+    static void Mseventh(String a){
         System.out.println("Привет, " + a + " !");
     }
 
-    static void _eighth(int a){
+    static void Meighth(int a){
         if( a % 400 == 0 || (a % 4 == 0 && a % 100 != 0)){
-            System.out.println("високосным");
+            System.out.println(" високосным");
         } else {
-            System.out.println("простым");
+            System.out.println(" простым");
         }
 
     }
