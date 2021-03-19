@@ -2,7 +2,7 @@ package Lesson2;
 
 import java.util.Arrays;
 
-
+// rere
 public class Lesson2 {
     public static void main(String[] args) {
         int[] arR = {0, 1, 1, 0, 1, 0, 1, 1, 0, 0};
