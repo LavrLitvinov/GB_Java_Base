@@ -1,10 +1,11 @@
-package LessonKrest;
+package Lesson4;
 
 import java.util.Random;
 import java.util.Scanner;
+
 public class Krest {
-    public static int SIZE = 3;
-    public static int DOTS_TO_WIN = 4;
+    public static int SIZE = 4;
+
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -17,13 +18,13 @@ public class Krest {
     public static int controlSumMainDiagonal = 0;
     public static int controlSumDiagonal = 0;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         run();
 
     }
 
 
-    public static void run( ) {
+    public static void run() {
         initMap();
         printMap();
         while (true) {
@@ -54,14 +55,12 @@ public class Krest {
     }
 
 
-
-
     public static boolean checkWin() {
         for (int i = 0; i < SIZE; i++) {
-            if(controlSumColumn[i] == SIZE*(-1) || controlSumColumn[i] == SIZE) return true;
-            if(controlSumRow[i] == SIZE*(-1) || controlSumRow[i] == SIZE) return true;
-            if(controlSumMainDiagonal == SIZE*(-1) || controlSumMainDiagonal == SIZE) return true;
-            if(controlSumDiagonal == SIZE*(-1) || controlSumDiagonal == SIZE) return true;
+            if (controlSumColumn[i] == SIZE * (-1) || controlSumColumn[i] == SIZE) return true;
+            if (controlSumRow[i] == SIZE * (-1) || controlSumRow[i] == SIZE) return true;
+            if (controlSumMainDiagonal == SIZE * (-1) || controlSumMainDiagonal == SIZE) return true;
+            if (controlSumDiagonal == SIZE * (-1) || controlSumDiagonal == SIZE) return true;
         }
         return false;
     }
@@ -85,10 +84,14 @@ public class Krest {
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
         map[x][y] = DOT_O;
         controlSumRow[x] -= 1;
-        controlSumColumn[y] -=1;
-        if( x == y ){ controlSumMainDiagonal -= 1; }
-        if( y == Math.abs(x - SIZE + 1)){ controlSumDiagonal -= 1; }
-        System.out.println(" "+controlSumDiagonal+" "+controlSumMainDiagonal);
+        controlSumColumn[y] -= 1;
+        if (x == y) {
+            controlSumMainDiagonal -= 1;
+        }
+        if (y == Math.abs(x - SIZE + 1)) {
+            controlSumDiagonal -= 1;
+        }
+        System.out.println(" " + controlSumDiagonal + " " + controlSumMainDiagonal);
 
     }
 
@@ -101,10 +104,14 @@ public class Krest {
         } while (!isCellValid(x, y)); // while(isCellValid(x, y) == false)
         map[x][y] = DOT_X;
         controlSumRow[x] += 1;
-        controlSumColumn[y] +=1;
-        if( x == y ){ controlSumMainDiagonal += 1;}
-        if( y == Math.abs(x - SIZE + 1)){ controlSumDiagonal += 1; }
-        System.out.println("  "+controlSumDiagonal+" "+controlSumMainDiagonal);
+        controlSumColumn[y] += 1;
+        if (x == y) {
+            controlSumMainDiagonal += 1;
+        }
+        if (y == Math.abs(x - SIZE + 1)) {
+            controlSumDiagonal += 1;
+        }
+        System.out.println("  " + controlSumDiagonal + " " + controlSumMainDiagonal);
     }
 
     public static boolean isCellValid(int x, int y) {
