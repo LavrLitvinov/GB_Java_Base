@@ -75,25 +75,70 @@ public class Krest1 {
         }
         return true;
     }
+    public static int aiBlock(){
+        int blockRow = indexRow(controlSumRow);
+        if(controlSumRow[blockRow] == SIZE - 1){
+            for (int i = 0; i < SIZE; i++) {
+                if(isCellValid(controlSumRow[blockRow],i)) {
+                    int flag = -1;
+                    stepStep(controlSumRow[blockRow],i, DOT_O, flag);
+                    return 1
+                }
+            }
+        }
+        else{
+            blockRow = indexRow(controlSumColumn);
+            if(controlSumColumn[blockRow] == SIZE - 1){
+                for (int i = 0; i < SIZE; i++) {
+                    if(isCellValid(i, controlSumColumn[blockRow])) {
+                        int flag = -1;
+                        stepStep(i, controlSumColumn[blockRow], DOT_O, flag);
+                        return 1
+                    }
+                }
+                else {
+                  if(controlSumMainDiagonal == SIZE -1)  
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+    public static int aiWin(){
+
+    }
+
+
 
     public static void aiTurn() {
-        int x, y;
-        do {
-            x = rand.nextInt(SIZE);
-            y = rand.nextInt(SIZE);
-        } while (!isCellValid(x, y));
-        System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
-        map[x][y] = DOT_O;
-        controlSumRow[x] -= 1;
-        controlSumColumn[y] -= 1;
-        if (x == y) {
-            controlSumMainDiagonal -= 1;
-        }
-        if (y == Math.abs(x - SIZE + 1)) {
-            controlSumDiagonal -= 1;
-        }
-        //System.out.println(" " + controlSumDiagonal + " " + controlSumMainDiagonal);
+        int cnt = 0
+        cnt = aiBlock();
+        if (aiBlock == 1) return;
 
+        aiWin(x, y);
+        aiStep(x, y);
+    }
+
+    public static void stepStep(int x3, int y3, char DOT, int flag){
+        // комп DOT = 0, flag = -1, чел DOT = X, flag = 1
+        System.out.println(" " + DOT + " в точку " + (x3 + 1) + " " + (y3 + 1));
+        map[x3][y3] = DOT_O;
+        controlSumRow[x3] += flag;
+        controlSumColumn[y3] += flag;
+        if (x3 == y3) {
+            controlSumMainDiagonal += flag;
+        }
+        if (y3 == Math.abs(x3 - SIZE + 1)) {
+            controlSumDiagonal += flag;
+        }
     }
 
     public static void humanTurn() {
@@ -103,17 +148,32 @@ public class Krest1 {
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(x, y)); // while(isCellValid(x, y) == false)
-        map[x][y] = DOT_X;
-        controlSumRow[x] += 1;
-        controlSumColumn[y] += 1;
-        if (x == y) {
-            controlSumMainDiagonal += 1;
-        }
-        if (y == Math.abs(x - SIZE + 1)) {
-            controlSumDiagonal += 1;
-        }
-        System.out.println("  " + controlSumDiagonal + " " + controlSumMainDiagonal);
+        int flagHum = 1;
+        stepStep(x, y, DOT_X, flagHum);
+
     }
+
+    public static int indexRow(int[] Row){
+
+        int indexOfMax = 0;
+        //int indexOfMin = 0;
+        for (int i = 1; i < Row.length; i++)
+        {
+            if (Row[i] > Row[indexOfMax])
+            {
+                indexOfMax = i;
+            }
+          //  else if (array[i] < array[indexOfMin])
+          //  {
+          //      indexOfMin = i;
+          //  }
+        }
+        return indexOfMax;
+    }
+
+
+
+
 
     public static boolean isCellValid(int x, int y) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
