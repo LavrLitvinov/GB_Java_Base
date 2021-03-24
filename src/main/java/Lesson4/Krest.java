@@ -91,7 +91,7 @@ public class Krest {
         if (y == Math.abs(x - SIZE + 1)) {
             controlSumDiagonal -= 1;
         }
-        System.out.println(" " + controlSumDiagonal + " " + controlSumMainDiagonal);
+
 
     }
 

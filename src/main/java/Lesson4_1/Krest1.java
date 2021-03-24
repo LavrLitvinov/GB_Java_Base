@@ -39,6 +39,7 @@ public class Krest1 {
                 System.out.println("Ничья");
                 break;
             }
+            //testMetod();
             aiTurn();
             printMap();
             if (checkWin()) {
@@ -56,7 +57,8 @@ public class Krest1 {
     }
 
 
-    public static boolean checkWin() {
+
+    public static boolean checkWin() { // проверяем признаки победы
         for (int i = 0; i < SIZE; i++) {
             if (controlSumColumn[i] == SIZE * (-1) || controlSumColumn[i] == SIZE) return true;
             if (controlSumRow[i] == SIZE * (-1) || controlSumRow[i] == SIZE) return true;
@@ -75,62 +77,83 @@ public class Krest1 {
         }
         return true;
     }
-    public static int aiBlock(){
-        int blockRow = indexRow(controlSumRow);
-        if(controlSumRow[blockRow] == SIZE - 1){
+
+
+    public static int aiBlock(int vAr) {
+
+        // ставим 0 в вытгрышную клетку (если она есть) или блокируем последнее поле человека
+        int flag = -1;
+        int blockRow = indexRow(controlSumRow, vAr);
+        if (controlSumRow[blockRow] == (SIZE - 1) * vAr) {
             for (int i = 0; i < SIZE; i++) {
-                if(isCellValid(controlSumRow[blockRow],i)) {
-                    int flag = -1;
-                    stepStep(controlSumRow[blockRow],i, DOT_O, flag);
-                    return 1
+                if (isCellValid(blockRow, i)) {
+                    System.out.println("vAr = " + vAr);
+                  //  System.out.println("blok 1:blockRow = " + blockRow + " controlSumRow[blockRow]= " + controlSumRow[blockRow] + " i = " + i);
+                    stepStep(blockRow, i, DOT_O, flag);
+                    return 1;
                 }
             }
-        }
-        else{
-            blockRow = indexRow(controlSumColumn);
-            if(controlSumColumn[blockRow] == SIZE - 1){
+        } else {
+            blockRow = indexRow(controlSumColumn, vAr);
+            if (controlSumColumn[blockRow] == (SIZE - 1) * vAr) {
                 for (int i = 0; i < SIZE; i++) {
-                    if(isCellValid(i, controlSumColumn[blockRow])) {
-                        int flag = -1;
-                        stepStep(i, controlSumColumn[blockRow], DOT_O, flag);
-                        return 1
+                    if (isCellValid(i, blockRow)) {
+                        stepStep(i, blockRow, DOT_O, flag);
+                        return 1;
                     }
                 }
-                else {
-                  if(controlSumMainDiagonal == SIZE -1)  
+            } else {
+                if (controlSumMainDiagonal == (SIZE - 1) * vAr) {
+                    for (int i = 0; i < SIZE; i++) {
+                        if (isCellValid(i, i)) {
+                            stepStep(i, i, DOT_O, flag);
+                            return 1;
+                        }
+                    }
+                } else {
+                    if (controlSumDiagonal == (SIZE - 1) * vAr) {
+                        for (int i = 0; i < SIZE; i++) {
+                            int j = Math.abs(i - SIZE + 1);
+                            if (isCellValid(i, j)) {
+                                stepStep(i, j, DOT_O, flag);
+                                return 1;
+                            }
+                        }
+                    }
                 }
+
+
             }
-
         }
-
-
-
-
-
-
-
-
+        return 0;
     }
-
-    public static int aiWin(){
-
-    }
-
 
 
     public static void aiTurn() {
-        int cnt = 0
-        cnt = aiBlock();
-        if (aiBlock == 1) return;
-
-        aiWin(x, y);
-        aiStep(x, y);
+        int cnt = 0;
+        cnt = aiBlock(-1); // выигрышный ход компа (если есть)
+        if (cnt == 1) return;
+        cnt = aiBlock(1); // блок хода человека
+        if (cnt == 1) return;
+        aiStep(); // рандомный ход компа
+        return;
     }
 
-    public static void stepStep(int x3, int y3, char DOT, int flag){
+     public static void aiStep(){
+         int x, y;
+         do {
+             x = rand.nextInt(SIZE);
+             y = rand.nextInt(SIZE);
+         } while (!isCellValid(x, y));
+         stepStep(x, y, DOT_O, -1);
+
+     }
+
+
+    public static void stepStep(int x3, int y3, char DOT, int flag) {
         // комп DOT = 0, flag = -1, чел DOT = X, flag = 1
-        System.out.println(" " + DOT + " в точку " + (x3 + 1) + " " + (y3 + 1));
-        map[x3][y3] = DOT_O;
+        System.out.println("Ход " + DOT + " в точку " + (x3 + 1) + " " + (y3 + 1));
+        map[x3][y3] = DOT;
         controlSumRow[x3] += flag;
         controlSumColumn[y3] += flag;
         if (x3 == y3) {
@@ -150,30 +173,25 @@ public class Krest1 {
         } while (!isCellValid(x, y)); // while(isCellValid(x, y) == false)
         int flagHum = 1;
         stepStep(x, y, DOT_X, flagHum);
-
     }
 
-    public static int indexRow(int[] Row){
-
+    public static int indexRow(int[] Row, int flug) {
+// индекс с минимальным/ максимальным значением контрольной суммы
         int indexOfMax = 0;
-        //int indexOfMin = 0;
-        for (int i = 1; i < Row.length; i++)
-        {
-            if (Row[i] > Row[indexOfMax])
-            {
+        int indexOfMin = 0;
+        for (int i = 1; i < Row.length; i++) {
+            if (Row[i] > Row[indexOfMax]) {
                 indexOfMax = i;
+            } else if (Row[i] < Row[indexOfMin]) {
+                indexOfMin = i;
             }
-          //  else if (array[i] < array[indexOfMin])
-          //  {
-          //      indexOfMin = i;
-          //  }
         }
-        return indexOfMax;
+        if (flug > 0) {
+            return indexOfMax;
+        } else {
+            return indexOfMin;
+        }
     }
-
-
-
-
 
     public static boolean isCellValid(int x, int y) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
@@ -206,7 +224,4 @@ public class Krest1 {
         }
         System.out.println();
     }
-
-
-
 }
