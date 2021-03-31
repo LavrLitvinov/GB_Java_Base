@@ -1,5 +1,5 @@
 package Lesson6;
-
+// Надо бы метод сопряжения числительного и окончания написать для красивого вывода.
 import java.util.Scanner;
 
 public class AnimalTest {
