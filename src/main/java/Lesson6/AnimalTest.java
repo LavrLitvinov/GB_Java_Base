@@ -1,5 +1,5 @@
 package Lesson6;
-
+// сопряжения окончаний для красивого вывода напишем потом
 import java.util.Scanner;
 
 public class AnimalTest {
