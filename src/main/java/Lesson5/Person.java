@@ -6,17 +6,15 @@ public class Person {
         arrPers[0] = new PersColegue("Водяной Мокрый", "Водяной", "voda@tina.boloto", "+ кудато-там", 86, 411);
         arrPers[1] = new PersColegue("Ведьма Лесная", "Ведьма", "chascha@les.info", "+ V Les!", 87, 4110);
         arrPers[2] = new PersColegue("Kащей Бессмертнов", "Кащей на ставке", "Kaschei@les.info", "+ V Les i Les!", 56, 5610);
-        arrPers[3] = new PersColegue("Домой Избов", "Нянька", "dom_sad@les.info", "+ V Dom!", 98, 4180);
+        arrPers[3] = new PersColegue("Домовой Избов", "Нянька", "dom_sad@les.info", "+ V Dom!", 98, 4180);
         arrPers[4] = new PersColegue("Изба Хоромная", "Здание Дворцовое", "I_am_house@les.info", "+ V Les Dom", 67, 4910);
 
-        for (PersColegue Data : arrPers) {
-            if (Data.getAge() > 4000) {
-                System.out.println("Имя: "+Data.getName() + "     " +"Должность: "+ Data.getPosition() );
+        if (arrPers[0].getAge() > 4000) {
+            System.out.println("Имя: " + arrPers[0].getName() + "     " + "Должность: " + arrPers[0].getPosition());
 
-            }
         }
-    }
 
+    }
 }
 
 
@@ -61,7 +59,6 @@ class PersColegue {
         this.salary = salary;
         this.age = age;
     }
-
 
 
 }
