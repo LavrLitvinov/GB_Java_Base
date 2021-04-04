@@ -8,7 +8,7 @@ public class MainTest {
         Scanner sc = new Scanner(System.in);
         int st = 0;
 
-
+// Набрали 5 драных котов
         HungryCat[] hungryCat = new HungryCat[5];
         hungryCat[0] = new HungryCat("Брысер", 0, false, 0);
         hungryCat[1] = new HungryCat("Драные обои", 0, false, 0);
