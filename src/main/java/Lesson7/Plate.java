@@ -1,7 +1,8 @@
 package Lesson7;
 
-public class Plate {
+import java.util.Scanner;
 
+public class Plate {
     private int food;
 
     public int getFood() {
@@ -15,6 +16,8 @@ public class Plate {
     public Plate(int food){
         this.food = food;
     }
+
+
     public void decriazeFood(int n){
         food -= n;
     }
@@ -23,8 +26,9 @@ public class Plate {
         System.out.println("plate: " + food);
     }
 
-
-
+    public void incrizeFood(int n){
+        food += n;
+    }
 
 
 }
