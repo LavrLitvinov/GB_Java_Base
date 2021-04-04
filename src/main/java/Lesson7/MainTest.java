@@ -1,7 +1,7 @@
 package Lesson7;
 
 import java.util.Scanner;
-
+// Готово!
 public class MainTest {
     public static void main(String[] args) {
         int food;
