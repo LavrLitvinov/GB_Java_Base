@@ -3,6 +3,7 @@ package Lesson7;
 import java.util.Scanner;
 
 public class Plate {
+
     private int food;
 
     public int getFood() {
@@ -28,6 +29,10 @@ public class Plate {
 
     public void incrizeFood(int n){
         food += n;
+    }
+
+    public Plate() {
+
     }
 
 

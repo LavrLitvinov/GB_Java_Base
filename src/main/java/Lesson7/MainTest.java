@@ -1,7 +1,7 @@
 package Lesson7;
 
 import java.util.Scanner;
-
+// Готово!
 public class MainTest {
     public static void main(String[] args) {
         int food;
@@ -20,8 +20,8 @@ public class MainTest {
 
         System.out.print("Насыпьте корм в тарелку : > ");
         food = sc.nextInt();
-        Plate plate = new Plate(food); //  наполнили тарелку.
-
+        Plate plate = new Plate(); //  наполнили тарелку.
+        plate.incrizeFood(food);
         while (true) {
             int i = 0;
             int cnt = 0;
