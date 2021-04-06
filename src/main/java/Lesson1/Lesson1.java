@@ -24,6 +24,14 @@ public class Lesson1 {
         int yearTest = 1304;
         // Для порядка инициализируем логическую переменную
         boolean dooleanValue = true;
+        byte a = 127;
+        a++;
+        //int e = new int [4][8].length;
+        System.out.println(a);
+
+
+       // System.out.println(new int[][]{{1,2,3}, {4,8,5}}[1][2]);
+
 
         System.out.println("Задание 3 :"+" a = "+volA + " b = "+volB + " c = "+volC+" d = "+volD+ " Итог:");
         System.out.println(Mthree(volA, volB, volC, volD));
@@ -45,6 +53,7 @@ public class Lesson1 {
     }
 
     static boolean Mfour(int a, int b){
+
         if (a+b < 10 || a+b > 20){
             return true;
         } else {
