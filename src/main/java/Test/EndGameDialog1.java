@@ -1,24 +1,17 @@
-package Lesson8;
+package Test;
+
+import Lesson8.GameXO;
+import Lesson8.Window;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.awt.Font;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-public class EndGameDialog extends JFrame {
+public class EndGameDialog1 extends JFrame {
 
 
-    public EndGameDialog()  {
+    public EndGameDialog1()  {
 
         setBounds(250,200,300, 300);
         FlowLayout fl; // -> -> ->
@@ -27,7 +20,7 @@ public class EndGameDialog extends JFrame {
 
         Font BigFontTR = new Font("Arial", Font.BOLD, 20);//Тут все про шрифт)
 
-        JTextField text = new JTextField(GameXO.quest);
+        JTextField text = new JTextField(GameXO1.quest);
         text.setFont(BigFontTR);
         text.setHorizontalAlignment(JTextField.CENTER);
 
@@ -44,7 +37,7 @@ public class EndGameDialog extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new Window();
+                new Window1();
                 dispose();
                 return;
 

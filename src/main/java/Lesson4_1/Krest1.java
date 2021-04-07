@@ -88,7 +88,7 @@ public class Krest1 {
             for (int i = 0; i < SIZE; i++) {
                 if (isCellValid(blockRow, i)) {
                     System.out.println("vAr = " + vAr);
-                  //  System.out.println("blok 1:blockRow = " + blockRow + " controlSumRow[blockRow]= " + controlSumRow[blockRow] + " i = " + i);
+                    //  System.out.println("blok 1:blockRow = " + blockRow + " controlSumRow[blockRow]= " + controlSumRow[blockRow] + " i = " + i);
                     stepStep(blockRow, i, DOT_O, flag);
                     return 1;
                 }

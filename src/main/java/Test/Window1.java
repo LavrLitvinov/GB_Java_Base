@@ -1,32 +1,19 @@
-package Lesson8;
+package Test;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.HeadlessException;
+import Lesson8.GameXO;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.Font;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+public class Window1 extends JFrame {
 
 
+    protected static final int[] rezult = new int[1];
+    public static int yy;
 
-
-import javax.swing.SwingUtilities;
-
-public class Window extends JFrame {
-
-
-    public static final int[] rezult = new int[1];
-
-    public Window()  {
+    public Window1()  {
 
 
 
@@ -54,8 +41,9 @@ public class Window extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                    rezult[0] = 3;
+                   yy = 3;
 
-                new GameXO();
+                new GameXO1();
                 dispose();
                 return;
 
@@ -67,7 +55,8 @@ public class Window extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 rezult[0] = 4;
-                new GameXO();
+                yy = 4;
+                new GameXO1();
                 dispose();
                 return;
             }
@@ -108,6 +97,6 @@ public class Window extends JFrame {
     }
 
     public static void main(String[] args) {
-    new Window();
+    new Window1();
     }
 }
