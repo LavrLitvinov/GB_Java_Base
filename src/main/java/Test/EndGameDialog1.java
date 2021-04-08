@@ -11,12 +11,10 @@ import java.awt.event.ActionListener;
 public class EndGameDialog1 extends JFrame {
 
 
-    public EndGameDialog1()  {
+    public EndGameDialog1() {
 
-        setBounds(250,200,300, 300);
-        FlowLayout fl; // -> -> ->
-        BorderLayout bl; // N, S, W, E, CENTER
-        GridLayout gl; // N x M
+        setBounds(250, 200, 300, 300);
+
 
         Font BigFontTR = new Font("Arial", Font.BOLD, 20);//Тут все про шрифт)
 
@@ -25,7 +23,7 @@ public class EndGameDialog1 extends JFrame {
         text.setHorizontalAlignment(JTextField.CENTER);
 
 
-        JPanel panel = new JPanel(new GridLayout(3,1));
+        JPanel panel = new JPanel(new GridLayout(3, 1));
         JButton button1 = new JButton("ПРОДОЛЖИМ!");
 
         JButton button3 = new JButton("ВЫХОД");
@@ -38,6 +36,7 @@ public class EndGameDialog1 extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 new Window1();
+
                 dispose();
                 return;
 
@@ -62,7 +61,6 @@ public class EndGameDialog1 extends JFrame {
         add(panel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-     //   dispose();
 
 
     }

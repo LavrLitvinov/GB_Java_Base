@@ -13,11 +13,9 @@ public class Window1 extends JFrame {
     protected static final int[] rezult = new int[1];
     public static int yy;
 
-    public Window1()  {
+    public Window1() {
 
-
-
-        setBounds(250,200,300, 300);
+        setBounds(250, 200, 300, 300);
         FlowLayout fl; // -> -> ->
         BorderLayout bl; // N, S, W, E, CENTER
         GridLayout gl; // N x M
@@ -29,7 +27,7 @@ public class Window1 extends JFrame {
         text.setHorizontalAlignment(JTextField.CENTER);
 
 
-        JPanel panel = new JPanel(new GridLayout(4,1));
+        JPanel panel = new JPanel(new GridLayout(4, 1));
         JButton button1 = new JButton("3 x 3");
         JButton button2 = new JButton("4 x 4");
         JButton button3 = new JButton("ВЫХОД");
@@ -40,13 +38,12 @@ public class Window1 extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                   rezult[0] = 3;
-                   yy = 3;
+                rezult[0] = 3;
+                yy = 3;
 
                 new GameXO1();
                 dispose();
                 return;
-
 
             }
         });
@@ -70,33 +67,19 @@ public class Window1 extends JFrame {
             }
         });
 
-        //   text.addKeyListener(new KeyAdapter() {
-     //       @Override
-      //      public void keyReleased(KeyEvent e) {
-      //          System.out.println(e.getKeyChar());
-     //           if (e.getKeyChar() == 'r') {
-     //               button.setText("OLOLO");
-     //           }
-     //       }
-    //    });
         panel.add(text);
         panel.add(button1);
         panel.add(button2);
         panel.add(button3);
-     //   panel.add(new JButton("3 x 3"));
-     //   panel.add(new JButton("4 x 4"));
-       // panel.add(new JButton("CLICK ME HJHJHJHJH"));
-      //  panel.add(new JButton("DON'T CLICK ME"));
+
         add(panel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         return;
 
-
-
     }
 
     public static void main(String[] args) {
-    new Window1();
+        new Window1();
     }
 }

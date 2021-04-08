@@ -20,7 +20,7 @@ public class EndGameDialog extends JFrame {
 
     public EndGameDialog()  {
 
-        setBounds(250,200,300, 300);
+        setBounds(400,200,300, 300);
         FlowLayout fl; // -> -> ->
         BorderLayout bl; // N, S, W, E, CENTER
         GridLayout gl; // N x M

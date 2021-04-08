@@ -5,6 +5,7 @@ import Lesson8.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class GameXO1 extends JFrame {
 
@@ -17,7 +18,6 @@ public class GameXO1 extends JFrame {
     private static int[] controlSumRow;
     private static int[] controlSumColumn;
 
-
     private static int controlSumMainDiagonal = 0;
     private static int controlSumDiagonal = 0;
     private static int SIZE;
@@ -25,15 +25,9 @@ public class GameXO1 extends JFrame {
     public static int cny = 0;
 
 
-
-
-
     public GameXO1()  {
 
-
-
         SIZE = Window1.yy;
-     //   SIZE = Window1.rezult[0];
 
         controlSumRow = new int[SIZE];
         controlSumColumn = new int[SIZE];
@@ -71,7 +65,7 @@ public class GameXO1 extends JFrame {
                         cleanWin();
                         quest = "Выирыш! Повторим?";
                         new EndGameDialog1();
-                        System.out.println("HUMAN WIN!");// диалоговое окно
+                //        System.out.println("HUMAN WIN!");// диалоговое окно
                         dispose();
                         return;
                     }
@@ -79,7 +73,7 @@ public class GameXO1 extends JFrame {
                         quest = "Ничья!! Продолжим игру?";
                         cleanWin();
                         new EndGameDialog1();
-                        System.out.println("WinWin");
+
                         dispose();
                         return;
                     }
@@ -91,11 +85,9 @@ public class GameXO1 extends JFrame {
                         quest = "Проигрыш! Повторим?";
                         new EndGameDialog1();
 
-
-                        System.out.println("COMP WIN!");// диалоговое окно
                         dispose();
                         return;
-                 //
+
                     }
                     if(checkWinWin()){
                         cleanWin();
@@ -103,7 +95,7 @@ public class GameXO1 extends JFrame {
                         new EndGameDialog1();
 
                         dispose();
-                        System.out.println("WinWin");
+                      //  System.out.println("WinWin");
                         return;
                     }
                 });
@@ -139,22 +131,6 @@ public class GameXO1 extends JFrame {
     }
 
     public static boolean checkWin() { // проверяем признаки победы
-        cny++;
-        System.out.println(" cny = "+ cny);
-
-        System.out.println("controlSumDiagonal = "+ controlSumDiagonal);
-        System.out.println("controlSumMainDiagonal = "+controlSumMainDiagonal);
-        System.out.println("по строкам");
-        for (int i = 0; i < SIZE; i++) {
-                System.out.print(" "+ controlSumRow[i]);
-            }
-            System.out.println();
-        System.out.println("по столбцам");
-        for (int i = 0; i < SIZE; i++) {
-            System.out.print(" "+controlSumColumn[i]);
-        }
-        System.out.println();
-
 
         for (int i = 0; i < SIZE; i++) {
             if (controlSumColumn[i] == SIZE * (-1) || controlSumColumn[i] == SIZE) return true;
@@ -174,9 +150,6 @@ public class GameXO1 extends JFrame {
         controlSumMainDiagonal = 0;
 
     }
-
-
-
 
     public  boolean checkWinWin() { // проверяем признаки победы
         for (int i = 0; i < SIZE; i++) {
@@ -205,13 +178,6 @@ public class GameXO1 extends JFrame {
         return;
 
     }
-
-
-
-
-
-
-
 
     private void aiStep1(){
         for (int i = 0; i < SIZE; i++) {
@@ -247,8 +213,6 @@ public class GameXO1 extends JFrame {
     }
 
     public  int aiBlock(int vAr) {
-
-        // ставим 0 в вытгрышную клетку (если она есть) или блокируем последнее поле человека
         int flag = -1;
         int blockRow = indexRow(controlSumRow, vAr);
         if (controlSumRow[blockRow] == (SIZE - 1) * vAr) {
@@ -305,16 +269,5 @@ public class GameXO1 extends JFrame {
         }
         return 0;
     }
-
-
-
-
-//    public static void main(String[] args) {
-
-  //      new GameXO();
-
-
- //   }
-
 
 }
