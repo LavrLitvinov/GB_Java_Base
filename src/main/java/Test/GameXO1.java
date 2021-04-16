@@ -1,13 +1,13 @@
-package Lesson8;
+package Test;
 
-import java.awt.*;
-
-
-
+import Lesson8.EndGameDialog;
+import Lesson8.Window;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
-public class  GameXO extends JFrame {
+public class GameXO1 extends JFrame {
 
 
     private static final ImageIcon DEFAULT = new ImageIcon("def.png");
@@ -15,24 +15,19 @@ public class  GameXO extends JFrame {
     private static final ImageIcon ICON_O = new ImageIcon("o.png");
     private JButton[][] map;
 
-    public static int[] controlSumRow;
-    public static int[] controlSumColumn;
+    private static int[] controlSumRow;
+    private static int[] controlSumColumn;
+
+    private static int controlSumMainDiagonal = 0;
+    private static int controlSumDiagonal = 0;
+    private static int SIZE;
+    protected static String quest = "";
+    public static int cny = 0;
 
 
-    public static int controlSumMainDiagonal = 0;
-    public static int controlSumDiagonal = 0;
-    public static int SIZE;
-    public static String quest = "";
+    public GameXO1()  {
 
-
-
-
-
-
-    public GameXO()  {
-
-
-        SIZE = Window.rezult[0];
+        SIZE = Window1.yy;
 
         controlSumRow = new int[SIZE];
         controlSumColumn = new int[SIZE];
@@ -67,16 +62,18 @@ public class  GameXO extends JFrame {
                     stepStep(k, e, 1);
                     if(checkWin()){
                         // Вытграл человек
+                        cleanWin();
                         quest = "Выирыш! Повторим?";
-                        new EndGameDialog();
-                        System.out.println("HUMAN WIN!");// диалоговое окно
+                        new EndGameDialog1();
+                //        System.out.println("HUMAN WIN!");// диалоговое окно
                         dispose();
                         return;
                     }
                     if(checkWinWin()){
                         quest = "Ничья!! Продолжим игру?";
-                        new EndGameDialog();
-                        System.out.println("WinWin");
+                        cleanWin();
+                        new EndGameDialog1();
+
                         dispose();
                         return;
                     }
@@ -84,22 +81,21 @@ public class  GameXO extends JFrame {
                     movePC();
                     // TODO: 05.04.2021 check victory
                     if(checkWin()){
-
+                        cleanWin();
                         quest = "Проигрыш! Повторим?";
-                        new EndGameDialog();
+                        new EndGameDialog1();
 
-
-                        System.out.println("COMP WIN!");// диалоговое окно
                         dispose();
                         return;
-                 //
+
                     }
                     if(checkWinWin()){
+                        cleanWin();
                         quest = "Ничья!! Продолжим игру?";
-                        new EndGameDialog();
+                        new EndGameDialog1();
 
                         dispose();
-                        System.out.println("WinWin");
+                      //  System.out.println("WinWin");
                         return;
                     }
                 });
@@ -135,6 +131,7 @@ public class  GameXO extends JFrame {
     }
 
     public static boolean checkWin() { // проверяем признаки победы
+
         for (int i = 0; i < SIZE; i++) {
             if (controlSumColumn[i] == SIZE * (-1) || controlSumColumn[i] == SIZE) return true;
             if (controlSumRow[i] == SIZE * (-1) || controlSumRow[i] == SIZE) return true;
@@ -142,6 +139,16 @@ public class  GameXO extends JFrame {
             if (controlSumDiagonal == SIZE * (-1) || controlSumDiagonal == SIZE) return true;
         }
         return false;
+    }
+
+    public static void cleanWin(){
+        for (int i = 0; i < SIZE; i++) {
+            controlSumRow[i] = 0;
+            controlSumColumn[i] = 0;
+        }
+        controlSumDiagonal = 0;
+        controlSumMainDiagonal = 0;
+
     }
 
     public  boolean checkWinWin() { // проверяем признаки победы
@@ -156,7 +163,7 @@ public class  GameXO extends JFrame {
 
     private void aiStep(){
         int i = 0;
-        int j = 0;
+        int j;
         while (true){
             i = (int)(Math.random()*(SIZE));
             j = (int)(Math.random()*(SIZE));
@@ -171,13 +178,6 @@ public class  GameXO extends JFrame {
         return;
 
     }
-
-
-
-
-
-
-
 
     private void aiStep1(){
         for (int i = 0; i < SIZE; i++) {
@@ -213,8 +213,6 @@ public class  GameXO extends JFrame {
     }
 
     public  int aiBlock(int vAr) {
-
-        // ставим 0 в вытгрышную клетку (если она есть) или блокируем последнее поле человека
         int flag = -1;
         int blockRow = indexRow(controlSumRow, vAr);
         if (controlSumRow[blockRow] == (SIZE - 1) * vAr) {
@@ -271,16 +269,5 @@ public class  GameXO extends JFrame {
         }
         return 0;
     }
-
-
-
-
-//    public static void main(String[] args) {
-
-  //      new GameXO();
-
-
- //   }
-
 
 }
